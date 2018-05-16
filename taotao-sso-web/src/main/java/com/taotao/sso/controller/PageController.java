@@ -11,7 +11,6 @@ public class PageController {
 		return "register";
 	}
 
-	// git
 	@RequestMapping("/page/login")
 	public String showLogin(String url, Model model) {
 		// 跳转到login的时候取url后面跟的参数
