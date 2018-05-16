@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+	<!-- 一个Job对应一个JobDetail对应一个Trigger，Scheduler只需要配置一个，如果有多个事件需要触发，就配置多个Trigger -->
+	<!-- Job，JobDetail，Trigger是一套的 -->
+	<!-- 配置Job类 -->
+	<bean id="orderJob" class="com.taotao.order.job.OrderJob" />
+	<!-- 配置JobDetail类 -->
+	<bean id="methodInvokingJobDetailFactoryBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="orderJob" />
+		</property>
+		<property name="targetMethod"><!-- 要执行的方法名称 -->
+			<value>execute</value>
+		</property>
+	</bean>
+	<!-- 配置一个trigger -->
+	<bean id="cronTriggerFactoryBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="methodInvokingJobDetailFactoryBean" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+	</bean>
+	<!-- Schedule相当于一个容器，里面放着很多任务，每个任务都有Trigger（Trigger会包装JobDetail（JobDetail会包装Job）） -->
+	<!-- 配置一个调度框架 -->
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers"><!-- 有可能有多个Trigger的情况，所以这里是一个list -->
+			<list>
+				<ref bean="cronTriggerFactoryBean" />
+			</list>
+		</property>
+	</bean>
+</beans>

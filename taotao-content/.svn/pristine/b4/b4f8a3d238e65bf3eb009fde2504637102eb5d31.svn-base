@@ -1,0 +1,368 @@
+
+
+[INFO ] 2018-05-12 22:03:35,218 method:org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:307)
+Root WebApplicationContext: initialization started
+
+
+[INFO ] 2018-05-12 22:03:35,322 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:578)
+Refreshing Root WebApplicationContext: startup date [Sat May 12 22:03:35 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-05-12 22:03:35,354 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-dao.xml]
+
+
+[INFO ] 2018-05-12 22:03:35,758 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-redis.xml]
+
+
+[INFO ] 2018-05-12 22:03:35,795 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-service.xml]
+
+
+[INFO ] 2018-05-12 22:03:35,860 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-05-12 22:03:35,886 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-trans.xml]
+
+
+[INFO ] 2018-05-12 22:03:36,050 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from class path resource [properties/db.properties]
+
+
+[INFO ] 2018-05-12 22:03:36,056 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from class path resource [properties/resource.properties]
+
+
+[INFO ] 2018-05-12 22:03:36,059 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:153)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[WARN ] 2018-05-12 22:03:37,300 method:org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546)
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'contentServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private java.lang.String com.taotao.content.service.impl.ContentServiceImpl.INDEX_CONTEXT; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'INDEX_CONTEXT' in string value "${INDEX_CONTEXT}"
+
+
+[ERROR] 2018-05-12 22:03:37,302 method:org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:353)
+Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'contentServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private java.lang.String com.taotao.content.service.impl.ContentServiceImpl.INDEX_CONTEXT; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'INDEX_CONTEXT' in string value "${INDEX_CONTEXT}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:446)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:328)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4939)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private java.lang.String com.taotao.content.service.impl.ContentServiceImpl.INDEX_CONTEXT; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'INDEX_CONTEXT' in string value "${INDEX_CONTEXT}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331)
+	... 22 more
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'INDEX_CONTEXT' in string value "${INDEX_CONTEXT}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:174)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:204)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:178)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$2.resolveStringValue(PropertySourcesPlaceholderConfigurer.java:172)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:808)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1027)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545)
+	... 24 more
+
+
+[INFO ] 2018-05-12 22:04:56,183 method:org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:307)
+Root WebApplicationContext: initialization started
+
+
+[INFO ] 2018-05-12 22:04:56,253 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:578)
+Refreshing Root WebApplicationContext: startup date [Sat May 12 22:04:56 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-05-12 22:04:56,286 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-dao.xml]
+
+
+[INFO ] 2018-05-12 22:04:56,386 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-redis.xml]
+
+
+[INFO ] 2018-05-12 22:04:56,419 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-service.xml]
+
+
+[INFO ] 2018-05-12 22:04:56,485 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-05-12 22:04:56,510 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-trans.xml]
+
+
+[INFO ] 2018-05-12 22:04:56,653 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\properties\db.properties]
+
+
+[INFO ] 2018-05-12 22:04:56,653 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\properties\resource.properties]
+
+
+[INFO ] 2018-05-12 22:04:56,661 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:153)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[INFO ] 2018-05-12 22:04:57,552 method:com.alibaba.dubbo.config.spring.ServiceBean.onApplicationEvent(ServiceBean.java:107)
+ [DUBBO] The service ready on spring started. service: com.taotao.content.service.ContentCategoryService, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:04:57,644 method:com.alibaba.dubbo.config.ServiceConfig.exportLocal(ServiceConfig.java:510)
+ [DUBBO] Export dubbo service com.taotao.content.service.ContentCategoryService to local registry, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:04:57,645 method:com.alibaba.dubbo.config.ServiceConfig.doExportUrlsFor1Protocol(ServiceConfig.java:470)
+ [DUBBO] Export dubbo service com.taotao.content.service.ContentCategoryService to url dubbo://192.168.156.100:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=addContentCategory,updateContentCategory,deleteContentCategory,getContentCategoryList&pid=11564&side=provider&timeout=300000&timestamp=1526133897574, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:04:57,645 method:com.alibaba.dubbo.config.ServiceConfig.doExportUrlsFor1Protocol(ServiceConfig.java:481)
+ [DUBBO] Register dubbo service com.taotao.content.service.ContentCategoryService url dubbo://192.168.156.100:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=addContentCategory,updateContentCategory,deleteContentCategory,getContentCategoryList&pid=11564&side=provider&timeout=300000&timestamp=1526133897574 to registry registry://192.168.156.60:2180/com.alibaba.dubbo.registry.RegistryService?application=taotao-content&dubbo=2.5.3&pid=11564&registry=zookeeper&timestamp=1526133897559, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:04:58,943 method:com.alibaba.dubbo.remoting.transport.AbstractServer.<init>(AbstractServer.java:69)
+ [DUBBO] Start NettyServer bind /0.0.0.0:20881, export /192.168.156.100:20881, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:04:59,095 method:com.alibaba.dubbo.registry.support.AbstractRegistry.loadProperties(AbstractRegistry.java:232)
+ [DUBBO] Load registry store file C:\Users\Chris\.dubbo\dubbo-registry-192.168.156.60.cache, data: {com.taotao.sso.service.UserService=empty://169.254.44.231/com.taotao.sso.service.UserService?application=taotao-order-web&category=configurators&dubbo=2.5.3&interface=com.taotao.sso.service.UserService&methods=logout,getUserByToken,checkData,login,register&pid=15328&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1525880569333 empty://169.254.44.231/com.taotao.sso.service.UserService?application=taotao-order-web&category=routers&dubbo=2.5.3&interface=com.taotao.sso.service.UserService&methods=logout,getUserByToken,checkData,login,register&pid=15328&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1525880569333 dubbo://169.254.44.231:20883/com.taotao.sso.service.UserService?anyhost=true&application=taotao-sso&dubbo=2.5.3&interface=com.taotao.sso.service.UserService&methods=logout,getUserByToken,checkData,login,register&pid=13428&side=provider&timeout=300000&timestamp=1525868188356, com.taotao.content.service.ContentCategoryService=empty://169.254.44.231:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=addContentCategory,deleteContentCategory,updateContentCategory,getContentCategoryList&pid=1388&side=provider&timeout=300000&timestamp=1525868148327, com.taotao.search.service.SearchService=empty://169.254.44.231:20882/com.taotao.search.service.SearchService?anyhost=true&application=taotao-search&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=9324&side=provider&timeout=300000&timestamp=1525868179432, com.taotao.order.service.OrderService=empty://169.254.44.231/com.taotao.order.service.OrderService?application=taotao-order-web&category=configurators&dubbo=2.5.3&interface=com.taotao.order.service.OrderService&methods=createOrder&pid=15328&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1525880570293 empty://169.254.44.231/com.taotao.order.service.OrderService?application=taotao-order-web&category=routers&dubbo=2.5.3&interface=com.taotao.order.service.OrderService&methods=createOrder&pid=15328&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1525880570293 dubbo://169.254.44.231:20884/com.taotao.order.service.OrderService?anyhost=true&application=taotao-order&dubbo=2.5.3&interface=com.taotao.order.service.OrderService&methods=createOrder&pid=9584&side=provider&timeout=300000&timestamp=1525880559540, com.taotao.service.ItemCatService=empty://169.254.44.231:20880/com.taotao.service.ItemCatService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemCatService&methods=getItemCatList&pid=11528&side=provider&timeout=300000&timestamp=1525868139093, com.taotao.service.ItemService=empty://169.254.44.231/com.taotao.service.ItemService?application=taotao-item-web&category=configurators&dubbo=2.5.3&interface=com.taotao.service.ItemService&methods=addItem,getItemList,getItemById,getItemDescById&pid=15096&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1525868257326 empty://169.254.44.231/com.taotao.service.ItemService?application=taotao-item-web&category=routers&dubbo=2.5.3&interface=com.taotao.service.ItemService&methods=addItem,getItemList,getItemById,getItemDescById&pid=15096&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1525868257326 dubbo://169.254.44.231:20880/com.taotao.service.ItemService?anyhost=true&application=taotao-manager&dubbo=2.5.3&interface=com.taotao.service.ItemService&methods=getItemList,addItem,getItemById,getItemDescById&pid=11528&side=provider&timeout=300000&timestamp=1525868128851, com.taotao.content.service.ContentService=empty://169.254.44.231:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,getContentByCategoryId,addContent,updateContent,deleteContent,getCoutent&pid=1388&side=provider&timeout=300000&timestamp=1525868157646, com.taotao.search.service.SearchItemService=empty://169.254.44.231:20882/com.taotao.search.service.SearchItemService?anyhost=true&application=taotao-search&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchItemService&methods=importItemToIndex&pid=9324&side=provider&timeout=300000&timestamp=1525868170096}, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:04:59,106 method:org.I0Itec.zkclient.ZkEventThread.run(ZkEventThread.java:64)
+Starting ZkClient event thread.
+
+
+[INFO ] 2018-05-12 22:05:08,191 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:zookeeper.version=3.4.7-1713338, built on 11/09/2015 04:32 GMT
+
+
+[INFO ] 2018-05-12 22:05:08,193 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:host.name=Chris
+
+
+[INFO ] 2018-05-12 22:05:08,194 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.version=1.8.0_112
+
+
+[INFO ] 2018-05-12 22:05:08,194 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.vendor=Oracle Corporation
+
+
+[INFO ] 2018-05-12 22:05:08,195 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.home=F:\jdk1.8\jre
+
+
+[INFO ] 2018-05-12 22:05:08,196 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.class.path=D:\apache-maven-3.5.2\boot\plexus-classworlds-2.5.2.jar
+
+
+[INFO ] 2018-05-12 22:05:08,196 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.library.path=F:\jdk1.8\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;F:/jdk1.8/bin/../jre/bin/server;F:/jdk1.8/bin/../jre/bin;F:/jdk1.8/bin/../jre/lib/amd64;F:\jdk1.8\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Python36;D:\apache-maven-3.5.2\bin;D:\mysql-5.6.37-winx64\bin;E:\VisualSVN\work\bin;C:\Users\Chris\AppData\Local\Microsoft\WindowsApps;;D:\eclipse\eclipse;;.
+
+
+[INFO ] 2018-05-12 22:05:08,197 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.io.tmpdir=C:\Users\Chris\AppData\Local\Temp\
+
+
+[INFO ] 2018-05-12 22:05:08,197 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.compiler=<NA>
+
+
+[INFO ] 2018-05-12 22:05:08,197 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.name=Windows 10
+
+
+[INFO ] 2018-05-12 22:05:08,197 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.arch=amd64
+
+
+[INFO ] 2018-05-12 22:05:08,198 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.version=10.0
+
+
+[INFO ] 2018-05-12 22:05:08,198 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.name=Chris
+
+
+[INFO ] 2018-05-12 22:05:08,198 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.home=C:\Users\Chris
+
+
+[INFO ] 2018-05-12 22:05:08,198 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.dir=E:\eclipse-workspace\taotao-content
+
+
+[INFO ] 2018-05-12 22:05:08,199 method:org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:438)
+Initiating client connection, connectString=192.168.156.60:2180 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@36c6637
+
+
+[INFO ] 2018-05-12 22:05:08,715 method:org.apache.zookeeper.ClientCnxn$SendThread.logStartConnect(ClientCnxn.java:1032)
+Opening socket connection to server 192.168.156.60/192.168.156.60:2180. Will not attempt to authenticate using SASL (unknown error)
+
+
+[INFO ] 2018-05-12 22:05:08,717 method:org.apache.zookeeper.ClientCnxn$SendThread.primeConnection(ClientCnxn.java:876)
+Socket connection established to 192.168.156.60/192.168.156.60:2180, initiating session
+
+
+[INFO ] 2018-05-12 22:05:08,729 method:org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1299)
+Session establishment complete on server 192.168.156.60/192.168.156.60:2180, sessionid = 0x163564e775c0001, negotiated timeout = 30000
+
+
+[INFO ] 2018-05-12 22:05:08,731 method:org.I0Itec.zkclient.ZkClient.processStateChanged(ZkClient.java:449)
+zookeeper state changed (SyncConnected)
+
+
+[INFO ] 2018-05-12 22:05:08,732 method:com.alibaba.dubbo.registry.support.AbstractRegistry.register(AbstractRegistry.java:302)
+ [DUBBO] Register: dubbo://192.168.156.100:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=addContentCategory,updateContentCategory,deleteContentCategory,getContentCategoryList&pid=11564&side=provider&timeout=300000&timestamp=1526133897574, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:08,967 method:com.alibaba.dubbo.registry.support.AbstractRegistry.subscribe(AbstractRegistry.java:325)
+ [DUBBO] Subscribe: provider://192.168.156.100:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=addContentCategory,updateContentCategory,deleteContentCategory,getContentCategoryList&pid=11564&side=provider&timeout=300000&timestamp=1526133897574, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,089 method:com.alibaba.dubbo.registry.support.AbstractRegistry.notify(AbstractRegistry.java:422)
+ [DUBBO] Notify urls for subscribe url provider://192.168.156.100:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=addContentCategory,updateContentCategory,deleteContentCategory,getContentCategoryList&pid=11564&side=provider&timeout=300000&timestamp=1526133897574, urls: [empty://192.168.156.100:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=addContentCategory,updateContentCategory,deleteContentCategory,getContentCategoryList&pid=11564&side=provider&timeout=300000&timestamp=1526133897574], dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,111 method:com.alibaba.dubbo.config.spring.ServiceBean.onApplicationEvent(ServiceBean.java:107)
+ [DUBBO] The service ready on spring started. service: com.taotao.content.service.ContentService, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,120 method:com.alibaba.dubbo.config.ServiceConfig.exportLocal(ServiceConfig.java:510)
+ [DUBBO] Export dubbo service com.taotao.content.service.ContentService to local registry, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,121 method:com.alibaba.dubbo.config.ServiceConfig.doExportUrlsFor1Protocol(ServiceConfig.java:470)
+ [DUBBO] Export dubbo service com.taotao.content.service.ContentService to url dubbo://192.168.156.100:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,getContentByCategoryId,addContent,updateContent,deleteContent,getCoutent&pid=11564&side=provider&timeout=300000&timestamp=1526133909115, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,121 method:com.alibaba.dubbo.config.ServiceConfig.doExportUrlsFor1Protocol(ServiceConfig.java:481)
+ [DUBBO] Register dubbo service com.taotao.content.service.ContentService url dubbo://192.168.156.100:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,getContentByCategoryId,addContent,updateContent,deleteContent,getCoutent&pid=11564&side=provider&timeout=300000&timestamp=1526133909115 to registry registry://192.168.156.60:2180/com.alibaba.dubbo.registry.RegistryService?application=taotao-content&dubbo=2.5.3&pid=11564&registry=zookeeper&timestamp=1526133909114, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,123 method:com.alibaba.dubbo.registry.support.AbstractRegistry.register(AbstractRegistry.java:302)
+ [DUBBO] Register: dubbo://192.168.156.100:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,getContentByCategoryId,addContent,updateContent,deleteContent,getCoutent&pid=11564&side=provider&timeout=300000&timestamp=1526133909115, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,248 method:com.alibaba.dubbo.registry.support.AbstractRegistry.subscribe(AbstractRegistry.java:325)
+ [DUBBO] Subscribe: provider://192.168.156.100:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,getContentByCategoryId,addContent,updateContent,deleteContent,getCoutent&pid=11564&side=provider&timeout=300000&timestamp=1526133909115, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,256 method:com.alibaba.dubbo.registry.support.AbstractRegistry.notify(AbstractRegistry.java:422)
+ [DUBBO] Notify urls for subscribe url provider://192.168.156.100:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,getContentByCategoryId,addContent,updateContent,deleteContent,getCoutent&pid=11564&side=provider&timeout=300000&timestamp=1526133909115, urls: [empty://192.168.156.100:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,getContentByCategoryId,addContent,updateContent,deleteContent,getCoutent&pid=11564&side=provider&timeout=300000&timestamp=1526133909115], dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-05-12 22:05:09,260 method:org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:347)
+Root WebApplicationContext: initialization completed in 13075 ms
+
+
+[INFO ] 2018-05-12 22:06:03,143 method:org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:307)
+Root WebApplicationContext: initialization started
+
+
+[INFO ] 2018-05-12 22:06:03,214 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:578)
+Refreshing Root WebApplicationContext: startup date [Sat May 12 22:06:03 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-05-12 22:06:03,250 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-dao.xml]
+
+
+[INFO ] 2018-05-12 22:06:03,351 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-redis.xml]
+
+
+[INFO ] 2018-05-12 22:06:03,386 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-service.xml]
+
+
+[INFO ] 2018-05-12 22:06:03,447 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-05-12 22:06:03,475 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from file [E:\eclipse-workspace\taotao-content\taotao-content-service\target\classes\spring\applicationContext-trans.xml]
+
+
+[INFO ] 2018-05-12 22:06:03,620 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from class path resource [properties/db.properties]
+
+
+[INFO ] 2018-05-12 22:06:03,625 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from class path resource [properties/resource.properties]
+
+
+[INFO ] 2018-05-12 22:06:03,628 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:153)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[WARN ] 2018-05-12 22:06:04,288 method:org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546)
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'contentServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private java.lang.String com.taotao.content.service.impl.ContentServiceImpl.INDEX_CONTEXT; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'INDEX_CONTEXT' in string value "${INDEX_CONTEXT}"
+
+
+[ERROR] 2018-05-12 22:06:04,290 method:org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:353)
+Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'contentServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private java.lang.String com.taotao.content.service.impl.ContentServiceImpl.INDEX_CONTEXT; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'INDEX_CONTEXT' in string value "${INDEX_CONTEXT}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:446)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:328)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4939)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private java.lang.String com.taotao.content.service.impl.ContentServiceImpl.INDEX_CONTEXT; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'INDEX_CONTEXT' in string value "${INDEX_CONTEXT}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:573)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331)
+	... 22 more
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'INDEX_CONTEXT' in string value "${INDEX_CONTEXT}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:174)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:204)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:178)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$2.resolveStringValue(PropertySourcesPlaceholderConfigurer.java:172)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:808)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1027)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:545)
+	... 24 more

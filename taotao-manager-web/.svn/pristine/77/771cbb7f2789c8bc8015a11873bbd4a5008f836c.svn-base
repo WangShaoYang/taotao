@@ -1,0 +1,31 @@
+package com.taotao.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.pojo.TbItem;
+import com.taotao.service.ItemService;
+
+@Controller
+public class ItemController {
+	@Autowired
+	private ItemService itemService;
+
+	@RequestMapping("/item/{itemId}")
+	// 当返回的数据不是html标签页面，而是其他格式的（json，xml）数据时候需要加上
+	@ResponseBody
+	// 如果出现406错误，很有可能是因为没有加入json相关的jar包
+	public TbItem getItemById(@PathVariable Long itemId) {
+		return itemService.getItemById(itemId);
+	}
+
+	@RequestMapping("/item/list")
+	@ResponseBody
+	public EasyUIDataGridResult getItemList(Integer page, Integer rows) {
+		return itemService.getItemList(page, rows);
+	}
+}

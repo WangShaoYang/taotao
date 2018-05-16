@@ -1,0 +1,4 @@
+#商品数据在Redis中缓存的前缀
+ITEM_INFO=ITEM_INFO
+#商品数据缓冲的时间
+TIME_EXPIRE=86400

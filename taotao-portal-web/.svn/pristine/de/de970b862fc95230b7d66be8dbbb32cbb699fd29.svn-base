@@ -1,0 +1,17 @@
+package com.taotao.portal.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class IndexController {
+	// SpringMVC中拦截器配置的是：*.html会被拦截
+	// 在web.xml中配置了welcome-file-list对应的是index.html
+	// 当访问localhost:8082的时候，会自动请求index.html
+	// 但是index.html不存在，DispatcherServlet拦截这个请求，并交给Controller来处理该请求
+	// 由于这个请求符合了Controller中的RequestMapping，所以访问到了WEB-INF下的index.jsp
+	@RequestMapping("/index")
+	public String showIndex() {
+		return "index";
+	}
+}

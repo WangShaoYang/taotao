@@ -1,0 +1,124 @@
+package com.taotao.content.service.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.common.utils.JsonUtils;
+import com.taotao.content.service.ContentService;
+import com.taotao.jedis.JedisClient;
+import com.taotao.mapper.TbContentMapper;
+import com.taotao.pojo.TbContent;
+import com.taotao.pojo.TbContentExample;
+import com.taotao.pojo.TbContentExample.Criteria;
+
+@Service
+public class ContentServiceImpl implements ContentService {
+	@Autowired
+	private TbContentMapper contentMapper;
+	@Autowired
+	private JedisClient jedisClient;
+	@Value("$(INDEX_CONTEXT)")
+	private String INDEX_CONTEXT;
+
+	@Override
+	public EasyUIDataGridResult getContentList(long categoryId, int page, int rows) {
+		// 设置分页信息
+		PageHelper.startPage(page, rows);
+		// 执行查询
+		TbContentExample example = new TbContentExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andCategoryIdEqualTo(categoryId);
+		// 获取查询结果
+		List<TbContent> list = contentMapper.selectByExample(example);
+		// 封装list
+		PageInfo<TbContent> pageInfo = new PageInfo<TbContent>(list);
+		EasyUIDataGridResult result = new EasyUIDataGridResult();
+		result.setRows(list);
+		result.setTotal(pageInfo.getTotal());
+		return result;
+	}
+
+	@Override
+	public TaotaoResult addContent(TbContent content) {
+		// 补全pojo属性
+		content.setCreated(new Date());
+		content.setUpdated(new Date());
+		// 插入到内容表
+		contentMapper.insert(content);
+		// 同步缓存，删除对应的缓存信息
+		jedisClient.hdel(INDEX_CONTEXT, content.getCategoryId().toString());
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult updateContent(TbContent content) {
+		// 填充属性
+		content.setUpdated(new Date());
+		// 更新内容
+		contentMapper.updateByPrimaryKeyWithBLOBs(content);
+		// 同步缓存，删除对应的缓存信息
+		jedisClient.hdel(INDEX_CONTEXT, content.getCategoryId().toString());
+		// 返回结果
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult deleteContent(String ids) {
+		String[] idList = ids.split(",");
+		for (String id : idList) {
+			TbContent tbContent = contentMapper.selectByPrimaryKey(Long.valueOf(id));
+			// 同步缓存，删除对应的缓存信息
+			jedisClient.hdel(INDEX_CONTEXT, tbContent.getCategoryId().toString());
+			// 删除内容
+			contentMapper.deleteByPrimaryKey(Long.valueOf(id));
+		}
+		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult getCoutent(long id) {
+		TbContent content = contentMapper.selectByPrimaryKey(id);
+		return TaotaoResult.ok(content);
+	}
+
+	@Override
+	public List<TbContent> getContentByCategoryId(long categoryId) {
+		// 先查询缓存
+		// 添加缓存不能影响正常的业务逻辑（如果查缓存的时候抛异常了，下面的查询数据库也要继续进行）
+		try {
+			// 1.查询到结果，把json转换成List返回
+			String json = jedisClient.hget(INDEX_CONTEXT, categoryId + "");
+			// isNotBlank()方法和isNotEmpty()有一点点区别，具体区别去看源码
+			if (StringUtils.isNotBlank(json)) {
+				List<TbContent> list = JsonUtils.jsonToList(json, TbContent.class);
+				return list;
+			}
+			// 2.查询不到结果，执行下面的操作去数据库中查询
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 缓存中没有命中，需要查询数据库
+		TbContentExample example = new TbContentExample();
+		Criteria criteria = example.createCriteria();
+		// 设置查询条件
+		criteria.andCategoryIdEqualTo(categoryId);
+		// 执行查询
+		List<TbContent> list = contentMapper.selectByExample(example);
+		// 把结果添加到缓存中，同样不能影响业务的正常执行
+		try {
+			jedisClient.hset(INDEX_CONTEXT, categoryId + "", JsonUtils.objectToJson(list));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+}

@@ -1,0 +1,2 @@
+#redis中缓存首页的key
+INDEX_CONTEXT=INDEX_CONTEXT
